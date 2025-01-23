@@ -1,0 +1,271 @@
+[gd_scene load_steps=14 format=3 uid="uid://br4o8j3bbcfll"]
+
+[ext_resource type="Script" path="res://UI/scripts/SettingsMenu.gd" id="1_kx4oo"]
+[ext_resource type="Script" path="res://UI/scripts/KeyBindSettings.gd" id="1_r1cng"]
+[ext_resource type="Script" path="res://UI/scripts/AudioSettings.gd" id="2_nnons"]
+[ext_resource type="Script" path="res://UI/scripts/GraphicsSettings.gd" id="3_abk6i"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_k7102"]
+device = -1
+ctrl_pressed = true
+keycode = 83
+
+[sub_resource type="Shortcut" id="Shortcut_aj535"]
+events = [SubResource("InputEventKey_k7102")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_v5f7a"]
+device = -1
+ctrl_pressed = true
+keycode = 90
+
+[sub_resource type="Shortcut" id="Shortcut_swphy"]
+events = [SubResource("InputEventKey_v5f7a")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_w3bon"]
+device = -1
+shift_pressed = true
+ctrl_pressed = true
+keycode = 90
+
+[sub_resource type="Shortcut" id="Shortcut_k212s"]
+events = [SubResource("InputEventKey_w3bon")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_4s6pc"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="InputEventKey" id="InputEventKey_aer4r"]
+device = -1
+ctrl_pressed = true
+keycode = 81
+
+[sub_resource type="Shortcut" id="Shortcut_mukmu"]
+events = [SubResource("InputEventKey_4s6pc"), SubResource("InputEventKey_aer4r")]
+
+[node name="Settings" type="TabContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+current_tab = 0
+script = ExtResource("1_kx4oo")
+
+[node name="Keybinds" type="Control" parent="." node_paths=PackedStringArray("StatusLabel")]
+layout_mode = 2
+script = ExtResource("1_r1cng")
+StatusLabel = NodePath("MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/KeyBindStatusText")
+metadata/_tab_index = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Keybinds"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Keybinds/MarginContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Keybinds/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 30
+theme_override_font_sizes/bold_font_size = 20
+bbcode_enabled = true
+text = "[b][u]Change the key bindings"
+fit_content = true
+autowrap_mode = 0
+
+[node name="HSeparator" type="HSeparator" parent="Keybinds/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Keybinds/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 120
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Keybinds/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Keybinds/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+follow_focus = true
+horizontal_scroll_mode = 0
+
+[node name="AllKeyBinds" type="VBoxContainer" parent="Keybinds/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Keybinds/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Keybinds/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="SaveButton" type="Button" parent="Keybinds/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+tooltip_text = "Save the current changes."
+disabled = true
+shortcut = SubResource("Shortcut_aj535")
+text = "Save changes"
+
+[node name="UndoButton" type="Button" parent="Keybinds/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+tooltip_text = "Undo changes and restore previously saved settings."
+shortcut = SubResource("Shortcut_swphy")
+text = "Undo Changes"
+
+[node name="ResetButton" type="Button" parent="Keybinds/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+tooltip_text = "Reset keybindings back to default."
+shortcut = SubResource("Shortcut_k212s")
+text = "Reset to default"
+
+[node name="KeyBindStatusText" type="RichTextLabel" parent="Keybinds/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/normal_font_size = 10
+fit_content = true
+autowrap_mode = 0
+
+[node name="Close" type="Button" parent="Keybinds"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -18.0
+offset_bottom = 31.0
+grow_horizontal = 0
+shortcut = SubResource("Shortcut_mukmu")
+text = "X"
+
+[node name="Audio" type="Control" parent="."]
+visible = false
+layout_mode = 2
+script = ExtResource("2_nnons")
+metadata/_tab_index = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Audio"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Audio/MarginContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Audio/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 30
+theme_override_font_sizes/bold_font_size = 20
+bbcode_enabled = true
+text = "[b][u]Change Audio Volumes"
+fit_content = true
+autowrap_mode = 0
+
+[node name="HSeparator" type="HSeparator" parent="Audio/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Audio/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Audio/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Audio/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+follow_focus = true
+horizontal_scroll_mode = 0
+
+[node name="AllVolumeSliders" type="VBoxContainer" parent="Audio/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+alignment = 1
+
+[node name="Close" type="Button" parent="Audio"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -18.0
+offset_bottom = 31.0
+grow_horizontal = 0
+shortcut = SubResource("Shortcut_mukmu")
+text = "X"
+
+[node name="Graphics" type="Control" parent="."]
+visible = false
+layout_mode = 2
+script = ExtResource("3_abk6i")
+metadata/_tab_index = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Graphics"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Graphics/MarginContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Graphics/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/bold_font_size = 20
+bbcode_enabled = true
+text = "[b][u]Change Graphics Settings
+[/u][/b] (In future updates)"
+fit_content = true
+autowrap_mode = 0
+
+[node name="Close" type="Button" parent="Graphics"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -18.0
+offset_bottom = 31.0
+grow_horizontal = 0
+shortcut = SubResource("Shortcut_mukmu")
+text = "X"
+
+[connection signal="pressed" from="Keybinds/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/SaveButton" to="Keybinds" method="_on_save_button_pressed"]
+[connection signal="pressed" from="Keybinds/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/UndoButton" to="Keybinds" method="_on_undo_button_pressed"]
+[connection signal="pressed" from="Keybinds/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/ResetButton" to="Keybinds" method="_on_reset_button_pressed"]
+[connection signal="pressed" from="Keybinds/Close" to="." method="_on_close_pressed"]
+[connection signal="pressed" from="Audio/Close" to="." method="_on_close_pressed"]
+[connection signal="pressed" from="Graphics/Close" to="." method="_on_close_pressed"]

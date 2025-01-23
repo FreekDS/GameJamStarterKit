@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=3 uid="uid://dt5xmgyywpw6c"]
+
+[ext_resource type="Script" path="res://UI/scripts/SingleKeyBind.gd" id="1_ae8ag"]
+
+[node name="KeyBind" type="HBoxContainer"]
+theme_override_constants/separation = 20
+script = ExtResource("1_ae8ag")
+
+[node name="Label" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_vertical = 4
+bbcode_enabled = true
+text = "run left"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="VSeparator" type="VSeparator" parent="."]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="."]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+focus_mode = 0
+text = "D"
+
+[node name="listening" type="RichTextLabel" parent="."]
+visible = false
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/normal_font_size = 10
+text = "<<press any key>>"
+fit_content = true
+autowrap_mode = 0
+
+[connection signal="pressed" from="Button" to="." method="_on_key_button_pressed"]
