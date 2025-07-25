@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://brwibcdg1xhm7"]
 
-[ext_resource type="Script" path="res://UI/scripts/SingleBusVolumeSlider.gd" id="1_gfhjc"]
+[ext_resource type="Script" uid="uid://fq1acac7574x" path="res://UI/scripts/SingleBusVolumeSlider.gd" id="1_gfhjc"]
 
 [node name="SingleBusVolumeSlider" type="HBoxContainer"]
 offset_right = 90.0

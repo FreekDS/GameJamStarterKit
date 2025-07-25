@@ -1,6 +1,6 @@
 extends Control
 
-var SingleBusVolumeSlider : PackedScene = preload("res://UI/helperScenes/SingleBusVolumeSlider.tscn")
+var SingleBusVolumeSlider : PackedScene = preload("res://UI/components/SingleBusVolumeSlider.tscn")
 @onready var all_volume_sliders = %AllVolumeSliders
 
 # TODO maybe separate container layout into separate scene?

@@ -15,14 +15,11 @@ var _originalScale : Vector2 = Vector2.ONE
 
 func _ready() -> void:
 	_setPivotOffset()
-	doPop()
+	#doPop()
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_accept"):
-		doPop()
-
-func _process(delta: float) -> void:
-	print(get_size())
+#func _input(event: InputEvent) -> void:
+	#if event.is_action_pressed("ui_accept"):
+		#doPop()
 
 ## Perform the popping animation
 func doPop() -> void:

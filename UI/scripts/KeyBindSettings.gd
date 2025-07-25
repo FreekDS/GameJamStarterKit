@@ -1,7 +1,7 @@
 extends Control
 
 
-var KeyBindScene = preload("res://UI/helperScenes/SingleKeyBind.tscn")
+var KeyBindScene = preload("res://UI/components/SingleKeyBind.tscn")
 
 @onready var KeyBindsContainer : VBoxContainer = %AllKeyBinds
 @onready var SaveButton = %SaveButton

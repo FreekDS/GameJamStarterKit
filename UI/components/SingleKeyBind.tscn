@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dt5xmgyywpw6c"]
 
-[ext_resource type="Script" path="res://UI/scripts/SingleKeyBind.gd" id="1_ae8ag"]
+[ext_resource type="Script" uid="uid://ctymnmkx3aedf" path="res://UI/scripts/SingleKeyBind.gd" id="1_ae8ag"]
 
 [node name="KeyBind" type="HBoxContainer"]
 theme_override_constants/separation = 20

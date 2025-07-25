@@ -1,35 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bvmslb2hf1aih"]
 
-[ext_resource type="Shader" path="res://UI/shaders/Transition.gdshader" id="1_ou77r"]
-
-[sub_resource type="GDScript" id="GDScript_v15m0"]
-script/source = "## Load this as autoload to have a visual transition effect
-extends CanvasLayer
-
-@onready var anim : AnimationPlayer = $FadeTransition/Animations
-
-signal done(isOpen: bool)
-
-var closed = false
-
-func open():
-	anim.play(\"fade\")
-	anim.animation_finished.connect(
-		func(_file):
-			done.emit(true),
-		CONNECT_ONE_SHOT
-	)
-	closed = false
-
-func close():
-	anim.play_backwards(\"fade\")
-	anim.animation_finished.connect(
-		func(_file):
-			done.emit(false),
-		CONNECT_ONE_SHOT
-	)
-	closed = true
-"
+[ext_resource type="Shader" uid="uid://bvfk6i185dhsd" path="res://UI/shaders/Transition.gdshader" id="1_ou77r"]
+[ext_resource type="Script" uid="uid://wy74dx7u28w0" path="res://UI/scripts/TransitionAnimations.gd" id="1_uaow7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qc4cc"]
 shader = ExtResource("1_ou77r")
@@ -68,13 +40,13 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4ekjq"]
 _data = {
-"RESET": SubResource("Animation_c3rug"),
-"fade": SubResource("Animation_wjffp")
+&"RESET": SubResource("Animation_c3rug"),
+&"fade": SubResource("Animation_wjffp")
 }
 
 [node name="TransitionAnimations" type="CanvasLayer"]
 process_mode = 3
-script = SubResource("GDScript_v15m0")
+script = ExtResource("1_uaow7")
 
 [node name="FadeTransition" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_qc4cc")
@@ -88,6 +60,6 @@ color = Color(0, 0, 0, 1)
 
 [node name="Animations" type="AnimationPlayer" parent="FadeTransition"]
 libraries = {
-"": SubResource("AnimationLibrary_4ekjq")
+&"": SubResource("AnimationLibrary_4ekjq")
 }
 autoplay = "RESET"

@@ -1,9 +1,9 @@
 [gd_scene load_steps=14 format=3 uid="uid://br4o8j3bbcfll"]
 
-[ext_resource type="Script" path="res://UI/scripts/SettingsMenu.gd" id="1_kx4oo"]
-[ext_resource type="Script" path="res://UI/scripts/KeyBindSettings.gd" id="1_r1cng"]
-[ext_resource type="Script" path="res://UI/scripts/AudioSettings.gd" id="2_nnons"]
-[ext_resource type="Script" path="res://UI/scripts/GraphicsSettings.gd" id="3_abk6i"]
+[ext_resource type="Script" uid="uid://cwbv71j8ir4s7" path="res://UI/scripts/SettingsMenu.gd" id="1_kx4oo"]
+[ext_resource type="Script" uid="uid://478al27yf0ea" path="res://UI/scripts/KeyBindSettings.gd" id="1_r1cng"]
+[ext_resource type="Script" uid="uid://cjjmpu88hxnqe" path="res://UI/scripts/AudioSettings.gd" id="2_nnons"]
+[ext_resource type="Script" uid="uid://b5oi43w04frol" path="res://UI/scripts/GraphicsSettings.gd" id="3_abk6i"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_k7102"]
 device = -1
